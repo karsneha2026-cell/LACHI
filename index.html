@@ -1,0 +1,1253 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LACHI | Shop Your Style</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --cream: #f8f5ef;
+  --paper: #fffdf9;
+  --black: #201b18;
+  --gold: #a98248;
+  --muted: #81786e;
+  --line: #e7dfd3;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--cream);
+  color: var(--black);
+  font-family: "DM Sans", sans-serif;
+}
+
+button, input, select { font: inherit; }
+button { cursor: pointer; }
+a { color: inherit; text-decoration: none; }
+
+.announcement {
+  background: var(--black);
+  color: #f8ead2;
+  text-align: center;
+  padding: 10px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+header {
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+}
+
+.nav {
+  max-width: 1380px;
+  margin: auto;
+  padding: 20px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+
+.logo {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 43px;
+  font-weight: 700;
+  letter-spacing: 7px;
+}
+
+.logo span { color: var(--gold); }
+
+.nav-links {
+  display: flex;
+  gap: 27px;
+  align-items: center;
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.nav-links a:hover { color: var(--gold); }
+
+.nav-actions { display: flex; gap: 12px; }
+
+.icon-btn {
+  border: 1px solid var(--line);
+  background: transparent;
+  padding: 10px 13px;
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+.icon-btn:hover { border-color: var(--gold); }
+
+.hero {
+  min-height: 540px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #e9dfd1;
+}
+
+.hero-copy {
+  padding: 75px 9% 70px 13%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.eyebrow {
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+}
+
+.hero h1 {
+  font-family: "Cormorant Garamond", serif;
+  font-weight: 500;
+  font-size: clamp(48px, 5.5vw, 78px);
+  line-height: .98;
+  margin-bottom: 23px;
+}
+
+.hero h1 em { color: #927044; font-weight: 400; }
+
+.hero p {
+  max-width: 380px;
+  color: #655b50;
+  font-size: 13px;
+  line-height: 2;
+  margin-bottom: 30px;
+}
+
+.primary-btn {
+  background: var(--black);
+  color: white;
+  border: 1px solid var(--black);
+  padding: 15px 25px;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: .2s;
+}
+
+.primary-btn:hover {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+.hero-image {
+  min-height: 540px;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.04), transparent),
+    url("https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=1400&q=85")
+    center 35% / cover;
+}
+
+.trust-strip {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  background: var(--paper);
+  border-bottom: 1px solid var(--line);
+  padding: 22px 5%;
+  text-align: center;
+}
+
+.trust-strip div {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #6f6559;
+}
+
+.trust-strip div + div { border-left: 1px solid var(--line); }
+
+.section {
+  max-width: 1380px;
+  margin: auto;
+  padding: 75px 5%;
+}
+
+.section-heading { text-align: center; margin-bottom: 38px; }
+
+.section-heading .eyebrow { margin-bottom: 10px; }
+
+.section-heading h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(35px, 4vw, 49px);
+  font-weight: 500;
+}
+
+.section-heading p {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.category-card {
+  position: relative;
+  height: 280px;
+  overflow: hidden;
+  background: #ddd;
+  cursor: pointer;
+}
+
+.category-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .5s;
+}
+
+.category-card:hover img { transform: scale(1.06); }
+
+.category-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(transparent 40%, rgba(0,0,0,.67));
+  display: flex;
+  align-items: flex-end;
+  padding: 22px;
+  color: white;
+}
+
+.category-overlay h3 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 29px;
+  font-weight: 500;
+}
+
+.category-overlay span {
+  display: block;
+  font-family: "DM Sans", sans-serif;
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  margin-top: 6px;
+}
+
+.collection { background: var(--paper); }
+
+.collection .section { padding-top: 75px; }
+
+.shop-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 28px;
+  flex-wrap: wrap;
+}
+
+.filters { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.filter-btn {
+  background: transparent;
+  border: 1px solid var(--line);
+  padding: 10px 15px;
+  color: #645b51;
+  font-size: 10px;
+  letter-spacing: .5px;
+}
+
+.filter-btn.active,
+.filter-btn:hover {
+  background: var(--black);
+  color: white;
+  border-color: var(--black);
+}
+
+.search-sort { display: flex; gap: 8px; }
+
+.search-sort input,
+.search-sort select {
+  background: var(--cream);
+  border: 1px solid var(--line);
+  padding: 11px;
+  font-size: 11px;
+  outline: none;
+  max-width: 180px;
+}
+
+.search-sort input:focus { border-color: var(--gold); }
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px 18px;
+}
+
+.product-card { min-width: 0; }
+
+.product-image {
+  position: relative;
+  overflow: hidden;
+  background: #eee6db;
+  aspect-ratio: 3 / 4;
+}
+
+.product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .45s;
+}
+
+.product-card:hover .product-image img { transform: scale(1.045); }
+
+.product-tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--paper);
+  padding: 7px 9px;
+  font-size: 9px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.quick-add {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  width: calc(100% - 20px);
+  border: none;
+  background: rgba(255,253,249,.96);
+  color: var(--black);
+  padding: 13px 8px;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: .25s;
+}
+
+.product-card:hover .quick-add,
+.quick-add:focus { opacity: 1; transform: translateY(0); }
+
+.product-info { padding-top: 14px; }
+
+.product-category {
+  color: var(--gold);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.product-info h3 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 22px;
+  font-weight: 600;
+  margin: 5px 0 7px;
+}
+
+.product-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.price { font-size: 12px; font-weight: 600; }
+
+.old-price {
+  font-size: 10px;
+  color: #9b9186;
+  text-decoration: line-through;
+  margin-left: 5px;
+}
+
+.stars { color: var(--gold); font-size: 10px; }
+
+.no-results {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 60px 10px;
+  color: var(--muted);
+}
+
+.story {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #e9dfd1;
+}
+
+.story-image {
+  min-height: 420px;
+  background: url("https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1200&q=85") center / cover;
+}
+
+.story-copy {
+  padding: 65px 12%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.story-copy h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(36px, 4vw, 53px);
+  font-weight: 500;
+  line-height: 1.05;
+  margin-bottom: 20px;
+}
+
+.story-copy p {
+  font-size: 12px;
+  line-height: 2;
+  color: #655b50;
+  margin-bottom: 25px;
+}
+
+.newsletter {
+  text-align: center;
+  padding: 65px 20px;
+  background: #f0e8dc;
+}
+
+.newsletter h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 40px;
+  font-weight: 500;
+}
+
+.newsletter p {
+  font-size: 12px;
+  color: var(--muted);
+  margin: 12px 0 22px;
+}
+
+.newsletter form {
+  display: flex;
+  max-width: 440px;
+  margin: auto;
+}
+
+.newsletter input {
+  flex: 1;
+  min-width: 0;
+  border: 1px solid #d8cabb;
+  background: var(--paper);
+  padding: 14px;
+  outline: none;
+  font-size: 12px;
+}
+
+.newsletter button { white-space: nowrap; }
+
+footer {
+  background: var(--black);
+  color: #e9dfd1;
+  padding: 48px 5% 25px;
+}
+
+.footer-inner {
+  max-width: 1280px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 40px;
+}
+
+.footer-logo { font-size: 39px; }
+
+.footer-about p {
+  color: #b9aea0;
+  max-width: 320px;
+  font-size: 11px;
+  line-height: 2;
+  margin-top: 14px;
+}
+
+.footer-col h4 {
+  color: #c6a36e;
+  font-size: 10px;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+}
+
+.footer-col a {
+  display: block;
+  color: #c8beb2;
+  font-size: 11px;
+  margin: 12px 0;
+}
+
+.footer-col a:hover { color: white; }
+
+.copyright {
+  max-width: 1280px;
+  margin: 35px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid #423a32;
+  color: #a89c8e;
+  font-size: 10px;
+  text-align: center;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.4);
+  z-index: 40;
+  opacity: 0;
+  visibility: hidden;
+  transition: .25s;
+}
+
+.overlay.open { opacity: 1; visibility: visible; }
+
+.cart-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: min(420px, 100%);
+  background: var(--paper);
+  z-index: 41;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform .3s;
+}
+
+.cart-drawer.open { transform: translateX(0); }
+
+.cart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+
+.cart-header h2 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 30px;
+  font-weight: 500;
+}
+
+.close-btn {
+  background: transparent;
+  border: 1px solid var(--line);
+  padding: 8px 12px;
+}
+
+.cart-items { overflow-y: auto; flex: 1; }
+
+.cart-item {
+  display: grid;
+  grid-template-columns: 75px 1fr auto;
+  gap: 13px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--line);
+  align-items: center;
+}
+
+.cart-item img {
+  width: 75px;
+  height: 95px;
+  object-fit: cover;
+}
+
+.cart-item h4 {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 19px;
+}
+
+.cart-item p { font-size: 11px; margin: 5px 0; }
+
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.quantity button {
+  border: 1px solid var(--line);
+  background: transparent;
+  width: 25px;
+  height: 25px;
+}
+
+.remove-btn {
+  display: block;
+  background: transparent;
+  border: none;
+  color: #88786a;
+  text-decoration: underline;
+  font-size: 10px;
+  margin-top: 6px;
+}
+
+.cart-footer { padding-top: 20px; }
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+
+.cart-footer .primary-btn { width: 100%; }
+
+.cart-note {
+  color: var(--muted);
+  font-size: 10px;
+  text-align: center;
+  margin-top: 12px;
+  line-height: 1.7;
+}
+
+.empty-cart {
+  text-align: center;
+  padding: 60px 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.toast {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translate(-50%, 20px);
+  background: var(--black);
+  color: white;
+  padding: 13px 20px;
+  font-size: 12px;
+  z-index: 60;
+  opacity: 0;
+  pointer-events: none;
+  transition: .25s;
+}
+
+.toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+@media (max-width: 900px) {
+  .nav { flex-wrap: wrap; }
+  .nav-links { order: 3; width: 100%; justify-content: center; gap: 18px; }
+  .hero-copy { padding: 55px 8%; }
+  .hero-image { min-height: 460px; }
+  .category-grid { grid-template-columns: repeat(2, 1fr); }
+  .product-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .quick-add { opacity: 1; transform: none; }
+}
+
+@media (max-width: 600px) {
+  .announcement { font-size: 8px; letter-spacing: 1px; }
+  .nav { padding: 13px 4%; gap: 10px; }
+  .logo { font-size: 34px; letter-spacing: 5px; }
+  .nav-links { gap: 13px; font-size: 9px; letter-spacing: .5px; }
+  .nav-actions { gap: 6px; }
+  .icon-btn { padding: 9px; font-size: 10px; }
+  .hero { grid-template-columns: 1fr; }
+  .hero-copy { padding: 55px 7%; }
+  .hero h1 { font-size: 57px; }
+  .hero-image { min-height: 350px; }
+  .trust-strip { padding: 17px 4%; }
+  .trust-strip div { font-size: 8px; letter-spacing: .5px; line-height: 1.7; }
+  .section { padding: 52px 4%; }
+  .category-grid { gap: 10px; }
+  .category-card { height: 220px; }
+  .category-overlay { padding: 13px; }
+  .category-overlay h3 { font-size: 25px; }
+  .shop-toolbar { align-items: stretch; }
+  .filters { width: 100%; }
+  .filter-btn { padding: 9px 11px; }
+  .search-sort { width: 100%; }
+  .search-sort input { flex: 1; max-width: none; }
+  .search-sort select { max-width: 145px; }
+  .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 11px; }
+  .product-info h3 { font-size: 19px; }
+  .product-category { font-size: 8px; }
+  .price { font-size: 11px; }
+  .old-price { margin-left: 2px; }
+  .quick-add { font-size: 8px; letter-spacing: 1px; padding: 12px 4px; }
+  .story { grid-template-columns: 1fr; }
+  .story-image { min-height: 330px; }
+  .story-copy { padding: 45px 7%; }
+  .newsletter h2 { font-size: 34px; }
+  .footer-inner { grid-template-columns: 1fr 1fr; gap: 30px 20px; }
+  .footer-about { grid-column: 1 / -1; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="announcement">
+  A little luxury, delivered to your door · Discover the LACHI collection
+</div>
+
+<header>
+  <nav class="nav">
+    <a href="#" class="logo">LA<span>C</span>HI</a>
+
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#categories">Collections</a>
+      <a href="#shop">Shop</a>
+      <a href="#story">Our Story</a>
+    </div>
+
+    <div class="nav-actions">
+      <button class="icon-btn" id="searchBtn">SEARCH</button>
+      <button class="icon-btn" id="cartBtn">BAG (<span id="cartCount">0</span>)</button>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="hero-copy">
+      <span class="eyebrow">The LACHI Signature Collection</span>
+      <h1>Elegance is<br>an <em>attitude.</em></h1>
+      <p>
+        Discover a world of timeless fashion, delicate jewellery and
+        everyday luxuries, thoughtfully chosen for your most beautiful self.
+      </p>
+      <a href="#shop" class="primary-btn">Explore the Collection →</a>
+    </div>
+    <div class="hero-image" role="img" aria-label="Elegant fashion editorial"></div>
+  </section>
+
+  <div class="trust-strip">
+    <div>✦ Thoughtfully Curated</div>
+    <div>✦ Timeless Elegance</div>
+    <div>✦ A Touch of Luxury</div>
+  </div>
+
+  <section class="section" id="categories">
+    <div class="section-heading">
+      <div class="eyebrow">Find Your Signature</div>
+      <h2>Shop by Collection</h2>
+      <p>Beautiful essentials for every side of you.</p>
+    </div>
+
+    <div class="category-grid">
+      <a href="#shop" class="category-card" data-category="Fashion">
+        <img src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=700&q=80" alt="Women's fashion" loading="lazy">
+        <div class="category-overlay"><div><h3>Fashion</h3><span>Style that speaks</span></div></div>
+      </a>
+
+      <a href="#shop" class="category-card" data-category="Jewellery">
+        <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=700&q=80" alt="Elegant jewellery" loading="lazy">
+        <div class="category-overlay"><div><h3>Jewellery</h3><span>Little treasures</span></div></div>
+      </a>
+
+      <a href="#shop" class="category-card" data-category="Beauty">
+        <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?auto=format&fit=crop&w=700&q=80" alt="Beauty skincare" loading="lazy">
+        <div class="category-overlay"><div><h3>Beauty</h3><span>Your daily ritual</span></div></div>
+      </a>
+
+      <a href="#shop" class="category-card" data-category="Accessories">
+        <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=700&q=80" alt="Luxury accessories" loading="lazy">
+        <div class="category-overlay"><div><h3>Accessories</h3><span>The finishing touch</span></div></div>
+      </a>
+    </div>
+  </section>
+
+  <section class="collection" id="shop">
+    <div class="section">
+      <div class="section-heading">
+        <div class="eyebrow">The Edit</div>
+        <h2>Curated with Love</h2>
+        <p>A refined collection of pieces you'll want to keep forever.</p>
+      </div>
+
+      <div class="shop-toolbar">
+        <div class="filters" id="filters">
+          <button class="filter-btn active" data-filter="All">All Pieces</button>
+          <button class="filter-btn" data-filter="Fashion">Fashion</button>
+          <button class="filter-btn" data-filter="Jewellery">Jewellery</button>
+          <button class="filter-btn" data-filter="Beauty">Beauty</button>
+          <button class="filter-btn" data-filter="Accessories">Accessories</button>
+        </div>
+
+        <div class="search-sort">
+          <input type="search" id="searchInput" placeholder="Find something lovely..." aria-label="Search products">
+          <select id="sortSelect" aria-label="Sort products">
+            <option value="featured">Featured</option>
+            <option value="low">Price: Low to High</option>
+            <option value="high">Price: High to Low</option>
+            <option value="name">Name: A–Z</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="product-grid" id="productGrid"></div>
+    </div>
+  </section>
+
+  <section class="story" id="story">
+    <div class="story-image" role="img" aria-label="Fashion and wardrobe inspiration"></div>
+    <div class="story-copy">
+      <div class="eyebrow">More than a Store</div>
+      <h2>Beauty in the<br>little details.</h2>
+      <p>
+        At LACHI, we believe luxury is not about having more.
+        It is about choosing pieces that make you feel confident,
+        graceful and completely yourself. Every detail matters.
+      </p>
+      <a href="#shop" class="primary-btn">Discover LACHI →</a>
+    </div>
+  </section>
+
+  <section class="newsletter">
+    <div class="eyebrow">A Note from LACHI</div>
+    <h2>Stay in the know.</h2>
+    <p>Discover new arrivals, styling inspiration and little luxuries.</p>
+    <form id="newsletterForm">
+      <input type="email" id="emailInput" placeholder="Your email address" required>
+      <button type="submit" class="primary-btn">Join Us</button>
+    </form>
+  </section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-about">
+      <a href="#" class="logo footer-logo">LA<span>C</span>HI</a>
+      <p>
+        A thoughtfully curated destination for timeless style,
+        beautiful details and the art of everyday elegance.
+      </p>
+    </div>
+
+    <div class="footer-col">
+      <h4>EXPLORE</h4>
+      <a href="#home">Home</a>
+      <a href="#categories">Collections</a>
+      <a href="#shop">Shop All</a>
+      <a href="#story">Our Story</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>NEED HELP?</h4>
+      <a href="mailto:hello@lachi.example">Contact Us</a>
+      <a href="#shop">Shopping</a>
+      <a href="#home">Back to Top ↑</a>
+    </div>
+  </div>
+
+  <div class="copyright">
+    © <span id="year"></span> LACHI. Made with elegance.
+  </div>
+</footer>
+
+<div class="overlay" id="overlay"></div>
+
+<aside class="cart-drawer" id="cartDrawer" aria-label="Shopping bag">
+  <div class="cart-header">
+    <h2>Your Shopping Bag</h2>
+    <button class="close-btn" id="closeCart">Close ✕</button>
+  </div>
+
+  <div class="cart-items" id="cartItems"></div>
+
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>Subtotal</span>
+      <strong id="cartTotal">₹0</strong>
+    </div>
+    <button class="primary-btn" id="checkoutBtn">Continue to Checkout →</button>
+    <p class="cart-note">Demo storefront. Payment and delivery are not connected yet.</p>
+  </div>
+</aside>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const products = [
+  {
+    id: 1, name: "The Evening Muse", category: "Fashion",
+    price: 2499, oldPrice: 2999, tag: "Bestseller",
+    image: "photo-1539109136881-3be0616acf4b"
+  },
+  {
+    id: 2, name: "Golden Hour Dress", category: "Fashion",
+    price: 2199, oldPrice: 0, tag: "New",
+    image: "photo-1539008835657-9e8e9680c956"
+  },
+  {
+    id: 3, name: "Classic Noir", category: "Fashion",
+    price: 1899, oldPrice: 2299, tag: "",
+    image: "photo-1595777457583-95e059d581b8"
+  },
+  {
+    id: 4, name: "The Everyday Edit", category: "Fashion",
+    price: 1599, oldPrice: 0, tag: "",
+    image: "photo-1483985988355-763728e1935b"
+  },
+  {
+    id: 5, name: "Golden Aura Hoops", category: "Jewellery",
+    price: 699, oldPrice: 899, tag: "Bestseller",
+    image: "photo-1611652022419-a9419f74343d"
+  },
+  {
+    id: 6, name: "Pearl Grace Earrings", category: "Jewellery",
+    price: 899, oldPrice: 0, tag: "New",
+    image: "photo-1535632066927-ab7c9ab60908"
+  },
+  {
+    id: 7, name: "Golden Hour Necklace", category: "Jewellery",
+    price: 1199, oldPrice: 1499, tag: "",
+    image: "photo-1599643478518-a784e5dc4c8f"
+  },
+  {
+    id: 8, name: "Timeless Gold Details", category: "Jewellery",
+    price: 799, oldPrice: 0, tag: "",
+    image: "photo-1617038220319-276d3cfab638"
+  },
+  {
+    id: 9, name: "Rose Glow Cream", category: "Beauty",
+    price: 549, oldPrice: 699, tag: "Popular",
+    image: "photo-1608248543803-ba4f8c70ae0b"
+  },
+  {
+    id: 10, name: "The Beauty Ritual", category: "Beauty",
+    price: 799, oldPrice: 0, tag: "New",
+    image: "photo-1556229010-6c3f2c9ca5f8"
+  },
+  {
+    id: 11, name: "Soft Touch Skincare", category: "Beauty",
+    price: 649, oldPrice: 799, tag: "",
+    image: "photo-1571781926291-c477ebfd024b"
+  },
+  {
+    id: 12, name: "Everyday Lip Colour", category: "Beauty",
+    price: 399, oldPrice: 0, tag: "",
+    image: "photo-1586495777744-4413f21062fa"
+  },
+  {
+    id: 13, name: "The Heritage Bag", category: "Accessories",
+    price: 1899, oldPrice: 2299, tag: "Bestseller",
+    image: "photo-1584917865442-de89df76afd3"
+  },
+  {
+    id: 14, name: "City Chic Handbag", category: "Accessories",
+    price: 1599, oldPrice: 0, tag: "New",
+    image: "photo-1548036328-c9fa89d128fa"
+  },
+  {
+    id: 15, name: "The Finishing Touch", category: "Accessories",
+    price: 499, oldPrice: 699, tag: "",
+    image: "photo-1523170335258-f5ed11844a49"
+  },
+  {
+    id: 16, name: "Classic Timepiece", category: "Accessories",
+    price: 2299, oldPrice: 2799, tag: "",
+    image: "photo-1524592094714-0f0654e20314"
+  }
+];
+
+let activeCategory = "All";
+let cart = [];
+
+const productGrid = document.getElementById("productGrid");
+const searchInput = document.getElementById("searchInput");
+const sortSelect = document.getElementById("sortSelect");
+const cartDrawer = document.getElementById("cartDrawer");
+const overlay = document.getElementById("overlay");
+const cartItems = document.getElementById("cartItems");
+const cartCount = document.getElementById("cartCount");
+const cartTotal = document.getElementById("cartTotal");
+const toast = document.getElementById("toast");
+
+function money(amount) {
+  return "₹" + amount.toLocaleString("en-IN");
+}
+
+function productImage(id, width = 600) {
+  return `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${width}&q=80`;
+}
+
+function renderProducts() {
+  const search = searchInput.value.trim().toLowerCase();
+
+  let list = products.filter(product => {
+    const matchesCategory =
+      activeCategory === "All" || product.category === activeCategory;
+
+    const matchesSearch =
+      product.name.toLowerCase().includes(search) ||
+      product.category.toLowerCase().includes(search);
+
+    return matchesCategory && matchesSearch;
+  });
+
+  if (sortSelect.value === "low") {
+    list.sort((a, b) => a.price - b.price);
+  } else if (sortSelect.value === "high") {
+    list.sort((a, b) => b.price - a.price);
+  } else if (sortSelect.value === "name") {
+    list.sort((a, b) => a.name.localeCompare(b.name));
+  }
+
+  if (!list.length) {
+    productGrid.innerHTML =
+      '<div class="no-results">No pieces found. Try another search.</div>';
+    return;
+  }
+
+  productGrid.innerHTML = list.map(product => `
+    <article class="product-card">
+      <div class="product-image">
+        <img
+          src="${productImage(product.image)}"
+          alt="${product.name}"
+          loading="lazy"
+        >
+        ${product.tag ? `<span class="product-tag">${product.tag}</span>` : ""}
+        <button class="quick-add" data-add="${product.id}">
+          + Add to Bag
+        </button>
+      </div>
+      <div class="product-info">
+        <div class="product-category">${product.category}</div>
+        <h3>${product.name}</h3>
+        <div class="product-bottom">
+          <div class="price">
+            ${money(product.price)}
+            ${product.oldPrice ? `<span class="old-price">${money(product.oldPrice)}</span>` : ""}
+          </div>
+          <span class="stars">★★★★★</span>
+        </div>
+      </div>
+    </article>
+  `).join("");
+}
+
+function showToast(message) {
+  toast.textContent = message;
+  toast.classList.add("show");
+
+  clearTimeout(showToast.timer);
+  showToast.timer = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2200);
+}
+
+function addToCart(id) {
+  const existing = cart.find(item => item.id === id);
+
+  if (existing) {
+    existing.quantity += 1;
+  } else {
+    cart.push({ id, quantity: 1 });
+  }
+
+  renderCart();
+  showToast("Added to your shopping bag ✦");
+}
+
+function changeQuantity(id, change) {
+  const item = cart.find(item => item.id === id);
+  if (!item) return;
+
+  item.quantity += change;
+
+  if (item.quantity <= 0) {
+    cart = cart.filter(item => item.id !== id);
+  }
+
+  renderCart();
+}
+
+function removeFromCart(id) {
+  cart = cart.filter(item => item.id !== id);
+  renderCart();
+}
+
+function renderCart() {
+  const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+  const total = cart.reduce((sum, item) => {
+    const product = products.find(p => p.id === item.id);
+    return sum + product.price * item.quantity;
+  }, 0);
+
+  cartCount.textContent = count;
+  cartTotal.textContent = money(total);
+
+  if (!cart.length) {
+    cartItems.innerHTML =
+      '<div class="empty-cart">Your bag is waiting for something lovely.</div>';
+    return;
+  }
+
+  cartItems.innerHTML = cart.map(item => {
+    const product = products.find(p => p.id === item.id);
+
+    return `
+      <div class="cart-item">
+        <img src="${productImage(product.image, 180)}" alt="${product.name}">
+        <div>
+          <h4>${product.name}</h4>
+          <p>${money(product.price)}</p>
+          <div class="quantity">
+            <button data-minus="${product.id}" aria-label="Decrease quantity">−</button>
+            <span>${item.quantity}</span>
+            <button data-plus="${product.id}" aria-label="Increase quantity">+</button>
+          </div>
+          <button class="remove-btn" data-remove="${product.id}">Remove</button>
+        </div>
+        <strong>${money(product.price * item.quantity)}</strong>
+      </div>
+    `;
+  }).join("");
+}
+
+function openCart() {
+  cartDrawer.classList.add("open");
+  overlay.classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function closeCart() {
+  cartDrawer.classList.remove("open");
+  overlay.classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+document.getElementById("filters").addEventListener("click", event => {
+  const button = event.target.closest("[data-filter]");
+  if (!button) return;
+
+  activeCategory = button.dataset.filter;
+
+  document.querySelectorAll(".filter-btn").forEach(btn => {
+    btn.classList.toggle("active", btn === button);
+  });
+
+  renderProducts();
+});
+
+document.querySelectorAll(".category-card").forEach(card => {
+  card.addEventListener("click", () => {
+    activeCategory = card.dataset.category;
+
+    document.querySelectorAll(".filter-btn").forEach(btn => {
+      btn.classList.toggle("active", btn.dataset.filter === activeCategory);
+    });
+
+    renderProducts();
+  });
+});
+
+productGrid.addEventListener("click", event => {
+  const button = event.target.closest("[data-add]");
+  if (button) addToCart(Number(button.dataset.add));
+});
+
+cartItems.addEventListener("click", event => {
+  const plus = event.target.closest("[data-plus]");
+  const minus = event.target.closest("[data-minus]");
+  const remove = event.target.closest("[data-remove]");
+
+  if (plus) changeQuantity(Number(plus.dataset.plus), 1);
+  if (minus) changeQuantity(Number(minus.dataset.minus), -1);
+  if (remove) removeFromCart(Number(remove.dataset.remove));
+});
+
+searchInput.addEventListener("input", renderProducts);
+sortSelect.addEventListener("change", renderProducts);
+
+document.getElementById("searchBtn").addEventListener("click", () => {
+  document.getElementById("shop").scrollIntoView({ behavior: "smooth" });
+  setTimeout(() => searchInput.focus(), 400);
+});
+
+document.getElementById("cartBtn").addEventListener("click", openCart);
+document.getElementById("closeCart").addEventListener("click", closeCart);
+overlay.addEventListener("click", closeCart);
+
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") closeCart();
+});
+
+document.getElementById("checkoutBtn").addEventListener("click", () => {
+  if (!cart.length) {
+    showToast("Your bag is empty.");
+    return;
+  }
+
+  alert(
+    "Thank you for shopping with LACHI!\\n\\n" +
+    "Your total is " + cartTotal.textContent + ".\\n\\n" +
+    "This is a demo checkout. A real payment and order system must be connected before accepting orders."
+  );
+});
+
+document.getElementById("newsletterForm").addEventListener("submit", event => {
+  event.preventDefault();
+  showToast("Thank you for your interest in LACHI ✦");
+  event.target.reset();
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+
+async function loadProductsFromBackend() {
+  try {
+    const response = await fetch("http://127.0.0.1:5000/api/products");
+
+    if (!response.ok) {
+      throw new Error("Could not load products");
+    }
+
+    const backendProducts = await response.json();
+
+    backendProducts.forEach(apiProduct => {
+      const existingProduct = products.find(
+        product => product.name === apiProduct.name
+      );
+
+      if (existingProduct) {
+        existingProduct.price = apiProduct.price;
+        existingProduct.category = apiProduct.category;
+      }
+    });
+
+    console.log("Products loaded from backend:", backendProducts);
+  } catch (error) {
+    console.error("Backend connection error:", error);
+  }
+
+  renderProducts();
+  renderCart();
+}
+
+loadProductsFromBackend();
+
+</script>
+
+</body>
+</html>
+
